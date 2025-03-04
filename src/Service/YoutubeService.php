@@ -38,8 +38,6 @@ class YoutubeService
             throw new \Exception("Impossible de récupérer les données de la chaîne.");
         }
 
-        // return $data['items'][0];
-
         return [
             'id' => $data['items'][0]['id'],
             'title' => $data['items'][0]['snippet']['title'] ?? null,
