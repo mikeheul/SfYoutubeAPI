@@ -71,13 +71,16 @@ final class YoutubeController extends AbstractController
 
     #[Route('/youtube/stats/{channelId}', name: 'youtube_stats')]
     // public function getStats(string $channelId): JsonResponse
-    public function getStats(string $channelId): Response
+    public function getStats(string $channelId, FavoriteRepository $fr): Response
     {
         try {
             $stats = $this->youtubeService->getChannelStats($channelId);
 
+            $isFavorite = $fr->findOneBy(['channelId' => $channelId]) !== null;
+
             return $this->render('youtube/stats.html.twig', [
-                'stats' => $stats
+                'stats' => $stats,
+                'isFavorite' => $isFavorite
             ]);
 
             // return new JsonResponse($stats);

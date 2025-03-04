@@ -22,13 +22,21 @@
         </p>
 
         <!-- Ajouter aux favoris -->
-        <div class="text-center mt-6">
-            <a href="#" id="add-to-favorites"
-            class="cursor-pointer px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
-            data-custom-url="{{ stats.customUrl }}" data-channel-id="{{ stats.id }}">
-                Ajouter aux favoris
-            </a>
-        </div>
+        {% if isFavorite %}
+            <div class="text-center mt-6">
+                <span class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md">
+                    ✅ Déjà en favoris
+                </span>
+            </div>
+        {% else %}
+            <div class="text-center mt-6">
+                <a href="#" id="add-to-favorites"
+                class="cursor-pointer px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+                data-custom-url="{{ stats.customUrl }}" data-channel-id="{{ stats.id }}">
+                    Ajouter aux favoris
+                </a>
+            </div>
+        {% endif %}
 
         <!-- Statistiques -->
         <div class="mt-6 bg-gray-900 p-6 rounded-lg shadow-lg">
