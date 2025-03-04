@@ -18,17 +18,17 @@
             <h2 class="text-2xl font-semibold text-gray-100 text-center mb-4">Statistiques</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700 text-center">
+                <div class="bg-gray-800 p-4 rounded-lg shadow-md text-center">
                     <p class="text-xl font-bold text-gray-100">{{ stats.statistics.subscribers|number_format(0, ',', ' ') }}</p>
                     <p class="text-gray-400 text-sm uppercase">Abonnés</p>
                 </div>
 
-                <div class="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700 text-center">
+                <div class="bg-gray-800 p-4 rounded-lg shadow-md text-center">
                     <p class="text-xl font-bold text-gray-100">{{ stats.statistics.views|number_format(0, ',', ' ') }}</p>
                     <p class="text-gray-400 text-sm uppercase">Vues</p>
                 </div>
 
-                <div class="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700 text-center">
+                <div class="bg-gray-800 p-4 rounded-lg shadow-md text-center">
                     <p class="text-xl font-bold text-gray-100">{{ stats.statistics.videos }}</p>
                     <p class="text-gray-400 text-sm uppercase">Vidéos</p>
                 </div>
@@ -48,7 +48,7 @@
             <h2 class="text-xl font-semibold text-gray-100">Dernières vidéos</h2>
             <a href="https://www.youtube.com/playlist?list={{ stats.uploads_playlist }}" target="_blank"
                 class="mt-4 inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-md hover:bg-red-700 transition duration-300">
-                Voir les vidéos →
+                Voir les vidéos
             </a>
         </div>
     </div>
