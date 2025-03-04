@@ -41,6 +41,7 @@ class YoutubeService
         return [
             'id' => $data['items'][0]['id'],
             'title' => $data['items'][0]['snippet']['title'] ?? null,
+            'customUrl' => $data['items'][0]['snippet']['customUrl'] ?? null,
             'description' => $data['items'][0]['snippet']['description'] ?? null,
             'publishedAt' => $data['items'][0]['snippet']['publishedAt'] ?? null,
             'thumbnail' => $data['items'][0]['snippet']['thumbnails']['high']['url'] ?? null,
