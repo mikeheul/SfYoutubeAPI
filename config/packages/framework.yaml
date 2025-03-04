@@ -6,7 +6,7 @@ framework:
     session: true
 
     #esi: true
-    #fragments: true
+    fragments: false
 
     # http_client:
     #     scoped_clients:
