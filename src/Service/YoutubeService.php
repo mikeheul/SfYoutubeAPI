@@ -45,6 +45,40 @@ class YoutubeService
         });
     }
 
+    public function getLastVideoByChannelId(string $channelId): ?array
+    {
+        $url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' . $channelId . '&order=date&maxResults=1&key=' . $_ENV['YOUTUBE_API_KEY'];
+
+        $response = $this->client->request('GET', $url);
+        $data = $response->toArray();
+
+        if (!empty($data['items'])) {
+            // La dernière vidéo est dans le premier élément du tableau
+            return $data['items'][0];
+        }
+
+        return null;
+    }
+
+    public function getLastVideoEmbed(string $channelId): ?array
+    {
+        $url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' . $channelId . '&order=date&maxResults=1&key=' . $_ENV['YOUTUBE_API_KEY'];
+
+        $response = $this->client->request('GET', $url);
+        $data = $response->toArray();
+
+        if (!empty($data['items'])) {
+            return $data['items'][0];
+        }
+
+        return null;
+    }
+
+    public function getEmbedUrl(string $videoId): string
+    {
+        return 'https://www.youtube.com/embed/' . $videoId;
+    }
+
     // public function getChannelStats(string $channelId): array
     // {
     //     $url = 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails,brandingSettings&id=' . $channelId . '&key=' . $_ENV['YOUTUBE_API_KEY'];
