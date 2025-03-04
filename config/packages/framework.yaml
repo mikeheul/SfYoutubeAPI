@@ -8,6 +8,15 @@ framework:
     #esi: true
     #fragments: true
 
+    # http_client:
+    #     scoped_clients:
+    #         youtube.client:
+    #             base_uri: 'https://www.googleapis.com/'  # URL de base
+    #             headers:
+    #                 Accept: 'application/json'
+    #             query:
+    #                 key: '%env(YOUTUBE_API_KEY)%'
+
 when@test:
     framework:
         test: true
