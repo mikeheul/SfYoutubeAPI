@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Favoris{% endblock %}
+
+{% block body %}
+    <div class="max-w-3xl mx-auto p-6 bg-gray-900 shadow-lg rounded-lg text-white">
+        <h1 class="text-3xl font-bold text-gray-100 text-center mb-6">Mes Favoris</h1>
+
+        {% if favorites is empty %}
+            <p class="text-gray-400 text-center">Aucun favori trouvé.</p>
+        {% else %}
+            <ul class="space-y-4">
+                {% for favorite in favorites %}
+                    <li class="bg-gray-800 p-4 rounded-lg shadow-md">
+                        <div class="flex items-center justify-between">
+                            <a href="{{ path('youtube_get_id', {'handle': favorite.customUrl}) }}" class="text-blue-400 hover:text-blue-600 text-xl font-semibold">
+                                {{ favorite.customUrl }}
+                            </a>
+                            <a href="" class="text-red-500 hover:text-red-700">
+                                Supprimer
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

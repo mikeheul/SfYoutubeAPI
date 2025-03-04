@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Favorite;
 use App\Service\YoutubeService;
+use App\Repository\FavoriteRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -38,6 +42,18 @@ final class YoutubeController extends AbstractController
     //     return new JsonResponse(['channelId' => $channelId]);
     // }
 
+    #[Route('/youtube/favoris', name: 'show_favorites')]
+    public function showFavorites(EntityManagerInterface $em, FavoriteRepository $fr): Response
+    {
+        // Récupérer les favoris de l'utilisateur
+        $favorites = $fr->findBy([], ['createdAt' => 'DESC']);
+
+        // Afficher la page avec les favoris
+        return $this->render('youtube/favorites.html.twig', [
+            'favorites' => $favorites,
+        ]);
+    }
+
     #[Route('/youtube/{handle}', name: 'youtube_get_id')]
     public function getChannelId(string $handle): JsonResponse|RedirectResponse
     {
@@ -68,5 +84,32 @@ final class YoutubeController extends AbstractController
         } catch (\Exception $e) {
             return new JsonResponse(['error' => $e->getMessage()], 400);
         }
+    }
+
+    #[Route('/youtube/favoris/{channelId}', name: 'add_to_favorites', methods: ['POST'])]
+    public function addToFavorites(EntityManagerInterface $em, Request $request, string $channelId): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+        $customUrl = $data['customUrl'] ?? null;
+        $customUrlWithoutAt = ltrim($customUrl, '@');
+
+        if (!$customUrl) {
+            return new JsonResponse(['error' => 'Le customUrl est requis'], 400);
+        }
+
+        // Ajouter les données aux favoris dans la base de données
+        $this->addFavoriteToDatabase($em, $channelId, $customUrlWithoutAt);
+
+        return new JsonResponse(['message' => 'Chaîne ajoutée aux favoris'], 200);
+    }
+
+    private function addFavoriteToDatabase(EntityManagerInterface $em, string $channelId, string $customUrl)
+    {
+        $favorite = new Favorite();
+        $favorite->setChannelId($channelId);
+        $favorite->setCustomUrl($customUrl);
+
+        $em->persist($favorite);
+        $em->flush();
     }
 }

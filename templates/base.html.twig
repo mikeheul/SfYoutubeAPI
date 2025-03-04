@@ -19,6 +19,14 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <nav class="bg-gray-900 p-4">
+                <div class="max-w-3xl mx-auto flex justify-between items-center">
+                    <a href="{{ path('show_favorites') }}" class="text-white
+                    font-semibold">Mes favoris</a>
+                </div>
+            </nav>
+        </header>
         <main class="min-h-screen p-6 bg-gray-800 text-white">
             {% block body %}{% endblock %}
         </main>
