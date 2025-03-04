@@ -38,7 +38,7 @@ class YoutubeService
             throw new \Exception("Impossible de récupérer les données de la chaîne.");
         }
 
-        // return $data['items'][0]['statistics'];
+        // return $data['items'][0];
 
         return [
             'id' => $data['items'][0]['id'],
@@ -46,7 +46,7 @@ class YoutubeService
             'description' => $data['items'][0]['snippet']['description'] ?? null,
             'publishedAt' => $data['items'][0]['snippet']['publishedAt'] ?? null,
             'thumbnail' => $data['items'][0]['snippet']['thumbnails']['high']['url'] ?? null,
-            'banner' => $data['items'][0]['brandingSettings']['image']['bannerImageUrl'] ?? null,
+            'banner' => $data['items'][0]['brandingSettings']['image']['bannerExternalUrl'] ?? null,
             'statistics' => [
                 'subscribers' => $data['items'][0]['statistics']['subscriberCount'] ?? 0,
                 'views' => $data['items'][0]['statistics']['viewCount'] ?? 0,
