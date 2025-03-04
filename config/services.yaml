@@ -16,6 +16,11 @@ services:
     #     arguments:
     #         $client: '@youtube.client'
 
+    App\Service\YoutubeService:
+        arguments:
+            $client: '@http_client'
+            $cache: '@cache.app'
+
     App\EventListener\RemoveNoIndexListener:
         tags:
             - { name: kernel.event_listener, event: kernel.response }

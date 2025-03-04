@@ -83,34 +83,37 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const favoriteLink = document.getElementById('add-to-favorites');
-
-        favoriteLink.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const channelId = favoriteLink.getAttribute('data-channel-id');
-            const customUrl = favoriteLink.getAttribute('data-custom-url');
-
-            fetch(`/youtube/favoris/${channelId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                body: JSON.stringify({ customUrl: customUrl })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message) {
-                    // alert(data.message); 
-                } else if (data.error) {
-                    alert(data.error); 
-                }
-            })
-            .catch(error => {
-                console.error('Erreur AJAX:', error);
-                alert('Une erreur est survenue.');
+        
+        // Vérifie si l'élément existe
+        if (favoriteLink) {
+            favoriteLink.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const channelId = favoriteLink.getAttribute('data-channel-id');
+                const customUrl = favoriteLink.getAttribute('data-custom-url');
+    
+                fetch(`/youtube/favoris/${channelId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({ customUrl: customUrl })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        // alert(data.message); 
+                    } else if (data.error) {
+                        alert(data.error); 
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur AJAX:', error);
+                    alert('Une erreur est survenue.');
+                });
             });
-        });
-    });
+        } 
+    });    
 </script>
 {% endblock %}

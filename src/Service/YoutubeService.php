@@ -9,6 +9,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class YoutubeService
 {
     private HttpClientInterface $client;
+    private CacheInterface $cache; 
 
     public function __construct(HttpClientInterface $client, CacheInterface $cache)
     {
