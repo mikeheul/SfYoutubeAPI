@@ -75,16 +75,16 @@ final class YoutubeController extends AbstractController
     {
         try {
             $stats = $this->youtubeService->getChannelStats($channelId);
-            $lastVideo = $this->youtubeService->getLastVideoByChannelId($channelId);
-            $embedUrl = $lastVideo ? $this->youtubeService->getEmbedUrl($lastVideo['id']['videoId']) : null;
+            // $lastVideo = $this->youtubeService->getLastVideoByChannelId($channelId);
+            // $embedUrl = $lastVideo ? $this->youtubeService->getEmbedUrl($lastVideo['id']['videoId']) : null;
 
             $isFavorite = $fr->findOneBy(['channelId' => $channelId]) !== null;
 
             return $this->render('youtube/stats.html.twig', [
                 'stats' => $stats,
                 'isFavorite' => $isFavorite,
-                'video' => $lastVideo,
-                'embedUrl' => $embedUrl,
+                // 'video' => $lastVideo,
+                // 'embedUrl' => $embedUrl,
             ]);
 
             // return new JsonResponse($stats);

@@ -60,26 +60,22 @@
             </div>
         </div>
 
-        {% if video %}
+        {# {% if video %}
             <div class="mt-6">
                 <h2 class="text-xl font-semibold text-gray-100 text-center">Dernière vidéo</h2>
-                {# <h2>{{ video.snippet.title }}</h2>
-                <p>{{ video.snippet.description }}</p>#}
-
-                <!-- Affichage de la vidéo en mode Embed -->
                 <iframe class="mt-3" width="100%" height="315" src="{{ embedUrl }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         
                 <p><a href="https://www.youtube.com/watch?v={{ video.id.videoId }}" target="_blank">Voir la vidéo sur YouTube</a></p>
             </div>
         {% else %}
             <p>Aucune vidéo disponible.</p>
-        {% endif %}
+        {% endif %} #}
 
         <!-- Bannière -->
         {% if stats.banner %}
             <div class="mt-6">
                 <h2 class="text-xl font-semibold text-gray-100 text-center">Bannière</h2>
-                <img src="{{ stats.banner }}" alt="Bannière de {{ stats.title }}" class="w-full rounded-lg shadow-md mt-3">
+                <img src="{{ stats.banner }}" alt="Bannière de {{ stats.title }}" class="w-full h-auto rounded-lg shadow-md mt-3">
             </div>
         {% endif %}
 
