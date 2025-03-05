@@ -109,8 +109,8 @@ class YoutubeService
 
     public function getChannelStats(string $channelId = null): array
     {
-        return $this->cache->get('youtube_channel_stats_' . $channelId, function (ItemInterface $item) use ($channelId) {
-            $item->expiresAfter(3600); // Cache pendant 1 heure
+        // return $this->cache->get('youtube_channel_stats_' . $channelId, function (ItemInterface $item) use ($channelId) {
+        //     $item->expiresAfter(3600); // Cache pendant 1 heure
 
             // $url = 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails,brandingSettings&id=' . $channelId . '&key=' . $_ENV['YOUTUBE_API_KEY'];
 
@@ -145,7 +145,7 @@ class YoutubeService
                     'description' => "Description factice - L'API YouTube est hors service ou le quota est dépassé.",
                     'publishedAt' => "2020-01-01T00:00:00Z",
                     'thumbnail' => "https://placehold.co/150",
-                    'banner' => "https://placehold.co/1024x300",
+                    'banner' => "https://placehold.co/1024x500",
                     'statistics' => [
                         'subscribers' => rand(1000, 50000),
                         'views' => rand(100000, 5000000),
@@ -162,7 +162,7 @@ class YoutubeService
                     'description' => "Description factice - L'API YouTube est hors service ou le quota est dépassé.",
                     'publishedAt' => "2020-01-01T00:00:00Z",
                     'thumbnail' => "https://placehold.co/150",
-                    'banner' => "https://placehold.co/1024x300",
+                    'banner' => "https://placehold.co/1024x500",
                     'statistics' => [
                         'subscribers' => rand(1000, 50000),
                         'views' => rand(100000, 5000000),
@@ -171,6 +171,6 @@ class YoutubeService
                     'uploads_playlist' => null
                 ];
             }
-        });
+        // });
     }
 }
