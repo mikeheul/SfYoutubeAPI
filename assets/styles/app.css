@@ -1,5 +1,36 @@
+/* @tailwindcss */
 @import "tailwindcss";
 
 * {
     font-family: "Nunito Sans", sans-serif;
+}
+
+@layer components {
+    .favorites-container {
+        @apply max-w-5xl mx-auto p-6 bg-gray-900 shadow-lg rounded-lg text-white;
+    }
+
+    .favorites-title {
+        @apply text-3xl font-bold text-gray-100 text-center mb-6;
+    }
+
+    .favorites-grid {
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
+    }
+
+    .favorite-item {
+        @apply bg-gray-800 hover:bg-gray-700 p-4 rounded-lg shadow-md flex flex-col items-center text-center;
+    }
+
+    .favorite-link {
+        @apply text-blue-400 hover:text-blue-600 text-lg font-semibold;
+    }
+
+    .favorite-date {
+        @apply text-sm font-thin mt-1 text-gray-400;
+    }
+
+    .delete-button {
+        @apply mt-4 px-4 py-2 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700 transition duration-300;
+    }
 }
