@@ -58,12 +58,14 @@ final class YoutubeController extends AbstractController
     public function getChannelId(string $handle): JsonResponse|RedirectResponse
     {
         // Récupérer l'ID de la chaîne à partir du handle
-        $channelId = $this->youtubeService->getChannelIdByHandle($handle);
+        // $channelId = $this->youtubeService->getChannelIdByHandle($handle);
 
-        if (!$channelId) {
+        // if (!$channelId) {
             // Si l'ID de la chaîne n'est pas trouvé, renvoyer une erreur JSON
-            return new JsonResponse(['error' => 'Aucune chaîne trouvée pour ce handle.'], 404);
-        }
+            // return new JsonResponse(['error' => 'Aucune chaîne trouvée pour ce handle.'], 404);
+        // }
+
+        $channelId = "test123";
 
         // Si l'ID de la chaîne est trouvé, rediriger vers la route des statistiques avec l'ID de la chaîne
         return $this->redirectToRoute('youtube_stats', ['channelId' => $channelId]);
@@ -71,7 +73,7 @@ final class YoutubeController extends AbstractController
 
     #[Route('/youtube/stats/{channelId}', name: 'youtube_stats')]
     // public function getStats(string $channelId): JsonResponse
-    public function getStats(string $channelId, FavoriteRepository $fr): Response
+    public function getStats(string $channelId = null, FavoriteRepository $fr): Response
     {
         try {
             $stats = $this->youtubeService->getChannelStats($channelId);
