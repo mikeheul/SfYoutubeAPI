@@ -6,6 +6,47 @@
 }
 
 @layer components {
+    /* Conteneur principal */
+    .stats-container {
+        @apply max-w-3xl mx-auto p-6 bg-gray-900 shadow-lg rounded-lg text-white;
+    }
+
+    /* Titres */
+    .stats-title {
+        @apply text-3xl font-bold text-gray-100 text-center;
+    }
+
+    /* Image de profil */
+    .profile-img {
+        @apply w-24 h-24 rounded-full shadow-lg hover:shadow-[0_0_30px_6px_rgba(59,130,246,0.9)] 
+        ring-2 ring-blue-500/40 transition-all duration-300;
+    }
+
+    /* Liens */
+    .stats-link {
+        @apply text-blue-400 hover:text-blue-600 transition-all duration-300;
+    }
+
+    /* Bouton Favoris */
+    .btn-favorite {
+        @apply px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300;
+    }
+
+    .btn-favorite-disabled {
+        @apply px-4 py-2 bg-green-700 text-white rounded-lg shadow-md;
+    }
+
+    /* Cartes des statistiques */
+    .stats-card {
+        @apply bg-gray-800 p-4 rounded-lg shadow-md text-center;
+    }
+
+    /* Bouton Voir les vidéos */
+    .btn-videos {
+        @apply mt-4 inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg 
+        shadow-md hover:bg-red-700 transition duration-300;
+    }
+
     .favorites-container {
         @apply max-w-5xl mx-auto p-6 bg-gray-900 shadow-lg rounded-lg text-white;
     }
